@@ -11,7 +11,8 @@
  */
 
 function sayHello() {
-  const context = document.getElementById('canvas1').getContext('2d');
+  const canvas = document.getElementById('canvas1');
+  const context = canvas.getContext('2d')
   context.clearRect(0, 0, canvas.width, canvas.height);
   context.font = "48px sans-serif";
   context.strokeText("Hello, World!", 10, 50);
@@ -45,21 +46,22 @@ function drawRectangle() {
   let width = Number(prompt("Width: "));
   let x = Number(prompt("X"));
   let y = Number(prompt("Y"));
-  if(height<1){
-    alert("Your height is too small.")
-  }if (width<1){
-    alert("Your width is too small.")
-  }if (x<5){
-    alert("Your x-coordinate is too small.")
-  }if (y<5){
-    alert("Your y-coordinate is too small.")
-  }if(height>512-y || width>1024-x){
-    alert("The rectangle will not fit on the canvas.")
-  }if(isNaN(height) == true || isNaN(width) == true || isNaN(x) == true || isNan(y) == true){
-    alert("Please make all of your values numbers.")
-  }
   const canvas = document.getElementById('canvas2');
   const context = canvas.getContext('2d');
+  context.clearRect(0, 0, canvas.width, canvas.height);
+  if(height<1){
+    alert("Your height is too small.")
+  }else if (width<1){
+    alert("Your width is too small.")
+  }else if (x<5){
+    alert("Your x-coordinate is too small.")
+  }else if (y<5){
+    alert("Your y-coordinate is too small.")
+  }else if(height>canvas.height-y || width>canvas.width-x){
+    alert("The rectangle will not fit on the canvas.")
+  }else if(height/1!=height || width/1!=width || x/1!=x || y/1!=y){
+    alert("Please enter a number.")
+  }
   context.strokeStyle="black";
   context.rect(x, y, width, height);
   context.stroke();
@@ -93,6 +95,7 @@ function drawRectangle() {
 function drawColoredRectangle() {
   const canvas = document.getElementById('canvas3');
   const context = canvas.getContext('2d');
+  context.clearRect(0, 0, canvas.width, canvas.height);
   let color = prompt("Color: ")
   if(color == "black" || color=="blue" || color=="green" || color=="orange" || color=="purple" || color== "red" || color=="yellow"){
     context.fillStyle = color;
@@ -132,7 +135,26 @@ function drawColoredRectangle() {
  */
 
 function drawTriangle() {
-
+  let sides = [Number(prompt("Side 1: ")), Number(prompt("Side 2: ")), Number(prompt("Side 3: "))];
+  sides.sort(function(a, b){return a-b});
+  const canvas = document.getElementById("canvas4");
+  const context = canvas.getContext("2d");
+  context.clearRect(0, 0, canvas.width, canvas.height);
+  if((sides[0]**2) + (sides[1]**2) != (sides[2]**2)){
+    alert("That is not a valid right triangle.")
+  }else if(sides[0]/1!=sides[0] || sides[1]/1!=sides[1] || sides[2]/1!=sides[2]){
+    alert("One of your inputs is not a number.")
+  }else if(sides[0]+10>canvas.height || sides[1]+10>canvas.width){
+    alert("The triangle will not fit on the canvas.")
+  }else{
+    context.beginPath();
+    context.moveTo(10, 10);
+    context.lineTo(10, 10+sides[0]);
+    context.lineTo(10+sides[1], 10+sides[0]);
+    context.closePath();
+    context.lineWidth = 1;
+    context.stroke();
+  }
 }
 
 /*
@@ -155,7 +177,9 @@ function drawTriangle() {
  */
 
 function drawSmileyFace() {
-
+  const canvas = document.getElementById("canvas5");
+  const context = canvas.getContext("2d");
+  
 }
 
 /*
