@@ -179,7 +179,9 @@ function drawTriangle() {
 function drawSmileyFace() {
   const canvas = document.getElementById("canvas5");
   const context = canvas.getContext("2d");
-  
+  let radius = prompt("Please enter a radius.");
+  context.beginPath();
+
 }
 
 /*
