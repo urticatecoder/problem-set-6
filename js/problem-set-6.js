@@ -61,10 +61,12 @@ function drawRectangle() {
     alert("The rectangle will not fit on the canvas.")
   }else if(height/1!=height || width/1!=width || x/1!=x || y/1!=y){
     alert("Please enter a number.")
+  }else{
+    context.strokeStyle="black";
+    context.rect(x, y, width, height);
+    context.stroke();
   }
-  context.strokeStyle="black";
-  context.rect(x, y, width, height);
-  context.stroke();
+
 }
 
 /*
@@ -179,9 +181,21 @@ function drawTriangle() {
 function drawSmileyFace() {
   const canvas = document.getElementById("canvas5");
   const context = canvas.getContext("2d");
-  let radius = prompt("Please enter a radius.");
-  context.beginPath();
-
+  let radius = Number(prompt("Radius:"));
+  context.clearRect(0, 0, canvas.width, canvas.height);
+  if(radius*2+10 > canvas.width || radius*2+10 > canvas.height){
+    alert("The smiley face will not fit on the canvas.")
+  }else{
+    context.beginPath();
+    context.arc(radius+10, radius+10, radius, 0, 2*Math.PI);
+    context.moveTo((radius*.3)+10+(.1*radius), (radius*.6)+10);
+    context.arc(radius*.3+10, radius*.6+10, radius*.1, 0, 2*Math.PI);
+    context.moveTo((radius*1.6)+10+(.1*radius), (radius*.6)+30);
+    context.arc(radius*1.6+10, radius*.6+30, radius*.1, 0, 2*Math.PI);
+    context.moveTo(radius+10+radius*.7, radius+20);
+    context.arc(radius+10, radius+20, radius*.7, 0, 1*Math.PI);
+    context.stroke();
+  }
 }
 
 /*
