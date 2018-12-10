@@ -184,7 +184,9 @@ function drawSmileyFace() {
   let radius = Number(prompt("Radius:"));
   context.clearRect(0, 0, canvas.width, canvas.height);
   if(radius*2+10 > canvas.width || radius*2+10 > canvas.height){
-    alert("The smiley face will not fit on the canvas.")
+    alert("The smiley face will not fit on the canvas.");
+  }else if(radius<5){
+    alert("The radius is too small");
   }else{
     context.beginPath();
     context.arc(radius+10, radius+10, radius, 0, 2*Math.PI);
@@ -217,7 +219,17 @@ function drawSmileyFace() {
  */
 
 function drawStar() {
-
+  let canvas=document.getElementById("canvas6");
+  let context=canvas.getContext("2d");
+  let outerRad=prompt("Outer Radius:");
+  let innerRad=prompt("Inner Radius:");
+  if(innerRad >= outerRad){
+    alert("Your outer radius must be greater than your inner radius.")
+  }
+  context.beginPath();
+  context.moveTo(125,125+outerRad);
+  context.lineTo();
+  context.lineTo()
 }
 
 /*
