@@ -223,13 +223,29 @@ function drawStar() {
   let context=canvas.getContext("2d");
   let outerRad=prompt("Outer Radius:");
   let innerRad=prompt("Inner Radius:");
+  context.clearRect(0, 0, canvas.width, canvas.height);
+  outerRad = Number(outerRad);
+  innerRad = Number(innerRad);
   if(innerRad >= outerRad){
     alert("Your outer radius must be greater than your inner radius.")
+  }else if(isNaN(outerRad)==true || isNaN(innerRad)==true){
+    alert("One of your inputs is not a number.")
+  }else{
+    context.beginPath();
+    context.moveTo(125, 125 - outerRad);
+    let i = 0;
+    let rotationAngle = 0 * Math.PI;
+    while (i < 5) {
+      context.lineTo(Math.cos(1.3 * Math.PI - rotationAngle) * innerRad + 125, Math.sin(1.3 * Math.PI - rotationAngle) * innerRad + 125);
+      context.lineTo(Math.cos(1.1 * Math.PI - rotationAngle) * outerRad + 125, Math.sin(1.1 * Math.PI - rotationAngle) * outerRad + 125);
+      rotationAngle+=0.4 * Math.PI;
+      i++;
+    }
+    context.closePath();
+    context.stroke();
+    lineWidth = 1;
   }
-  context.beginPath();
-  context.moveTo(125,125+outerRad);
-  context.lineTo();
-  context.lineTo()
+
 }
 
 /*
