@@ -264,6 +264,11 @@ function drawStar() {
  */
 
 function drawStopSign() {
+  let canvas = document.getElementById("output7");
+  let context = canvas.getContext("2d");
+  let a = (Math.PI*2)/8;
+  context.beginPath();
+  context.moveTo();
 
 }
 
