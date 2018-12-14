@@ -219,8 +219,8 @@ function drawSmileyFace() {
  */
 
 function drawStar() {
-  let canvas=document.getElementById("canvas6");
-  let context=canvas.getContext("2d");
+  const canvas=document.getElementById("canvas6");
+  const context=canvas.getContext("2d");
   let outerRad=prompt("Outer Radius:");
   let innerRad=prompt("Inner Radius:");
   context.clearRect(0, 0, canvas.width, canvas.height);
@@ -263,13 +263,26 @@ function drawStar() {
  * The leftmost and topmost sides should have X- and Y-coordinates of 10.
  */
 
-function drawStopSign() {
-  let canvas = document.getElementById("output7");
-  let context = canvas.getContext("2d");
-  let a = (Math.PI*2)/8;
-  context.beginPath();
-  context.moveTo();
-
+function drawStopSign(){
+  const canvas = document.getElementById("canvas7");
+  const context = canvas.getContext("2d");
+  context.clearRect(0, 0, canvas.width, canvas.height);
+  //I used SOH-CAH-TOA to find the values of each point ahead of time.
+  context.moveTo(66,10);
+  context.lineTo(146,10);
+  context.lineTo(202,66);
+  context.lineTo(202,146);
+  context.lineTo(146,202);
+  context.lineTo(66,202);
+  context.lineTo(10,146);
+  context.lineTo(10,66);
+  context.closePath();
+  context.fillStyle ="red";
+  context.lineWidth = 3;
+  context.fill();
+  context.font = "65px sans-serif";
+  context.fillStyle = "white";
+  context.fillText("STOP", 19, 130);
 }
 
 /*
@@ -291,7 +304,10 @@ function drawStopSign() {
  */
 
 function drawPyramid() {
-
+  let blockLength = prompt("Length:");
+  for(let i = 0; i<5; i++){
+    
+  }
 }
 
 /*
