@@ -278,7 +278,6 @@ function drawStopSign(){
   context.lineTo(10,66);
   context.closePath();
   context.fillStyle ="red";
-  context.lineWidth = 3;
   context.fill();
   context.font = "65px sans-serif";
   context.fillStyle = "white";
@@ -304,9 +303,26 @@ function drawStopSign(){
  */
 
 function drawPyramid() {
+  const canvas = document.getElementById("canvas8");
+  const context = canvas.getContext("2d");
   let blockLength = prompt("Length:");
+  blockLength = Number(blockLength);
+  let x = 10;
+  let y = canvas.height - 10;
   for(let i = 0; i<5; i++){
-    
+    context.strokeStyle="black";
+    context.strokeRect(x, y, blockLength, blockLength);
+    x += blockLength;
+  }
+  x = 10;
+  y -= blocklength;
+  for(i=0; i<4; i++){
+    context.strokeStyle="black";
+    context.strokeRect(x+(.5*blockLength), y, blockLength, blockLength)
+    x+= blockLength;
+  }
+  for(i=0; i<3; i++){
+    context.strokeStyle
   }
 }
 
