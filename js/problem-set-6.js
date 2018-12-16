@@ -305,25 +305,41 @@ function drawStopSign(){
 function drawPyramid() {
   const canvas = document.getElementById("canvas8");
   const context = canvas.getContext("2d");
+  context.clearRect(0, 0, canvas.width, canvas.height);
   let blockLength = prompt("Length:");
   blockLength = Number(blockLength);
   let x = 10;
-  let y = canvas.height - 10;
+  let y = canvas.height - 10 - blockLength;
   for(let i = 0; i<5; i++){
     context.strokeStyle="black";
     context.strokeRect(x, y, blockLength, blockLength);
     x += blockLength;
   }
   x = 10;
-  y -= blocklength;
+  y -= blockLength;
   for(i=0; i<4; i++){
     context.strokeStyle="black";
-    context.strokeRect(x+(.5*blockLength), y, blockLength, blockLength)
+    context.strokeRect(x+(.5*blockLength), y, blockLength, blockLength);
     x+= blockLength;
   }
+  x = 10;
+  y -= blockLength;
   for(i=0; i<3; i++){
-    context.strokeStyle
+    context.strokeStyle="black";
+    context.strokeRect(x+blockLength, y, blockLength, blockLength);
+    x+=blockLength;
   }
+  x=10;
+  y -= blockLength;
+  for(i=0; i<2; i++){
+    context.strokeStyle="black";
+    context.strokeRect(x+1.5*blockLength, y, blockLength, blockLength);
+    x+=blockLength;
+  }
+  x=10;
+  y-=blockLength;
+  context.strokeStyle="black";
+  context.strokeRect(x+2*blockLength, y, blockLength, blockLength);
 }
 
 /*
