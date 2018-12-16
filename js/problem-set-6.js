@@ -142,10 +142,10 @@ function drawTriangle() {
   const canvas = document.getElementById("canvas4");
   const context = canvas.getContext("2d");
   context.clearRect(0, 0, canvas.width, canvas.height);
-  if((sides[0]**2) + (sides[1]**2) != (sides[2]**2)){
-    alert("That is not a valid right triangle.")
-  }else if(sides[0]/1!=sides[0] || sides[1]/1!=sides[1] || sides[2]/1!=sides[2]){
+  if(isNaN(sides[0])==true || isNaN(sides[1])==true || isNaN(sides[2])==true){
     alert("One of your inputs is not a number.")
+  }else if((sides[0]**2) + (sides[1]**2) != (sides[2]**2)){
+    alert("That is not a valid right triangle.")
   }else if(sides[0]+10>canvas.height || sides[1]+10>canvas.width){
     alert("The triangle will not fit on the canvas.")
   }else{
