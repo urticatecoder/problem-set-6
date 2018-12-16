@@ -376,5 +376,47 @@ function drawPyramid() {
  */
 
 function drawHouse() {
-
+  const canvas = document.getElementById("canvas9");
+  const context = canvas.getContext("2d");
+  let houseColor = prompt("House Color:");
+  let doorColor = prompt("Front Door Color:");
+  if(houseColor!="blue" && houseColor!="brown" && houseColor!="green" && houseColor!="orange" && houseColor!="purple" && houseColor!="red" && houseColor!="yellow" || doorColor!="blue" && doorColor!="brown" && doorColor!="green" && doorColor!="orange" && doorColor!="purple" && doorColor!="red" && doorColor!="yellow"){
+    alert("One of your colors is not supported.")
+  }else{
+    let houseHeight = (canvas.height / 5) * 3;
+    let houseWidth = canvas.width - 300;
+    context.rect(150, canvas.height-10-houseHeight, houseWidth, houseHeight);
+    context.fillStyle = houseColor;
+    context.fill();
+    context.strokeStyle = "black";
+    context.stroke();
+    context.beginPath();
+    context.moveTo(512, 10);
+    context.lineTo(151,294);
+    context.lineTo(873,294);
+    context.closePath();
+    context.lineWidth = 2;
+    context.stroke();
+    context.fillStyle = "gray";
+    context.fill();
+    context.fillStyle = doorColor;
+    context.fillRect(450, 540, 124, 210);
+    context.strokeRect(450,540,124,210);
+    context.lineWidth = 2;
+    context.beginPath();
+    context.moveTo(568, 645);
+    context.arc(560, 645, 8, 0, Math.PI*2);
+    context.stroke();
+    context.fillStyle = "gold";
+    context.fill();
+    context.fillStyle = "lightBlue";
+    context.fillRect(250, 367, 100, 100);
+    context.strokeRect(250, 367, 100, 100);
+    context.fillRect(250, canvas.height-185, 100, 100);
+    context.strokeRect(250, canvas.height-185, 100, 100);
+    context.fillRect(674, 367, 100, 100);
+    context.strokeRect(674, 367, 100, 100);
+    context.fillRect(674, canvas.height-185, 100, 100);
+    context.strokeRect(674, canvas.height-185, 100, 100);
+  }
 }
