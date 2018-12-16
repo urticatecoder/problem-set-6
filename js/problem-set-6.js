@@ -185,8 +185,6 @@ function drawSmileyFace() {
   context.clearRect(0, 0, canvas.width, canvas.height);
   if(radius*2+10 > canvas.width || radius*2+10 > canvas.height){
     alert("The smiley face will not fit on the canvas.");
-  }else if(radius<5){
-    alert("The radius is too small");
   }else{
     context.beginPath();
     context.arc(radius+10, radius+10, radius, 0, 2*Math.PI);
@@ -267,7 +265,7 @@ function drawStopSign(){
   const canvas = document.getElementById("canvas7");
   const context = canvas.getContext("2d");
   context.clearRect(0, 0, canvas.width, canvas.height);
-  //I used SOH-CAH-TOA to find the values of each point ahead of time.
+  //SOH-CAH-TOA used on paper to calculate points. Irrational numbers were rounded.
   context.moveTo(66,10);
   context.lineTo(146,10);
   context.lineTo(202,66);
@@ -308,38 +306,44 @@ function drawPyramid() {
   context.clearRect(0, 0, canvas.width, canvas.height);
   let blockLength = prompt("Length:");
   blockLength = Number(blockLength);
-  let x = 10;
-  let y = canvas.height - 10 - blockLength;
-  for(let i = 0; i<5; i++){
+  if(blockLength*5+10 > canvas.width || blockLength*5+10 > canvas.height){
+    alert("The pyramid will not fit on the canvas")
+  }else if(isNaN(blockLength)==true){
+    alert("Your input is not a number");
+  }else{
+    let x = 10;
+    let y = canvas.height - 10 - blockLength;
+    for(let i = 0; i<5; i++){
+      context.strokeStyle="black";
+      context.strokeRect(x, y, blockLength, blockLength);
+      x += blockLength;
+    }
+    x = 10;
+    y -= blockLength;
+    for(i=0; i<4; i++){
+      context.strokeStyle="black";
+      context.strokeRect(x+(.5*blockLength), y, blockLength, blockLength);
+      x+= blockLength;
+    }
+    x = 10;
+    y -= blockLength;
+    for(i=0; i<3; i++){
+      context.strokeStyle="black";
+      context.strokeRect(x+blockLength, y, blockLength, blockLength);
+      x+=blockLength;
+    }
+    x=10;
+    y -= blockLength;
+    for(i=0; i<2; i++){
+      context.strokeStyle="black";
+      context.strokeRect(x+1.5*blockLength, y, blockLength, blockLength);
+      x+=blockLength;
+    }
+    x=10;
+    y-=blockLength;
     context.strokeStyle="black";
-    context.strokeRect(x, y, blockLength, blockLength);
-    x += blockLength;
+    context.strokeRect(x+2*blockLength, y, blockLength, blockLength);
   }
-  x = 10;
-  y -= blockLength;
-  for(i=0; i<4; i++){
-    context.strokeStyle="black";
-    context.strokeRect(x+(.5*blockLength), y, blockLength, blockLength);
-    x+= blockLength;
-  }
-  x = 10;
-  y -= blockLength;
-  for(i=0; i<3; i++){
-    context.strokeStyle="black";
-    context.strokeRect(x+blockLength, y, blockLength, blockLength);
-    x+=blockLength;
-  }
-  x=10;
-  y -= blockLength;
-  for(i=0; i<2; i++){
-    context.strokeStyle="black";
-    context.strokeRect(x+1.5*blockLength, y, blockLength, blockLength);
-    x+=blockLength;
-  }
-  x=10;
-  y-=blockLength;
-  context.strokeStyle="black";
-  context.strokeRect(x+2*blockLength, y, blockLength, blockLength);
 }
 
 /*
